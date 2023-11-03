@@ -9,6 +9,7 @@ import image8 from "../../Images/image-8.webp";
 import image9 from "../../Images/image-8.webp";
 import image10 from "../../Images/image-10.jpeg";
 import image11 from "../../Images/image-11.jpeg";
+import AddImageBtn from "../AddImageBtn/AddImageBtn";
 
 const Gallery = () => {
   return (
@@ -28,7 +29,8 @@ const Gallery = () => {
       <img className="border rounded-md" src={image9} alt="" />
       <img className="border rounded-md" src={image10} alt="" />
       <img className="border rounded-md" src={image11} alt="" />
-      <button>add image</button>
+      {/* <button>add image</button> */}
+      <AddImageBtn />
     </div>
   );
 };
