@@ -6,7 +6,7 @@ import image5 from "../../Images/image-5.webp";
 import image6 from "../../Images/image-6.webp";
 import image7 from "../../Images/image-7.webp";
 import image8 from "../../Images/image-8.webp";
-import image9 from "../../Images/image-8.webp";
+import image9 from "../../Images/image-9.webp";
 import image10 from "../../Images/image-10.jpeg";
 import image11 from "../../Images/image-11.jpeg";
 import AddImageBtn from "../AddImageBtn/AddImageBtn";
