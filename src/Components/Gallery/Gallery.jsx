@@ -1,35 +1,56 @@
-import image1 from "../../Images/image-1.webp";
-import image2 from "../../Images/image-2.webp";
-import image3 from "../../Images/image-3.webp";
-import image4 from "../../Images/image-4.webp";
-import image5 from "../../Images/image-5.webp";
-import image6 from "../../Images/image-6.webp";
-import image7 from "../../Images/image-7.webp";
-import image8 from "../../Images/image-8.webp";
-import image9 from "../../Images/image-9.webp";
-import image10 from "../../Images/image-10.jpeg";
-import image11 from "../../Images/image-11.jpeg";
+import { useState } from "react";
+import { Data } from "../../Data/Data";
 import AddImageBtn from "../AddImageBtn/AddImageBtn";
 
 const Gallery = () => {
+  const [selectedImages, setSelectedImages] = useState([]);
+  console.log(selectedImages);
+
+  const handleImageClick = (image) => {
+    if (selectedImages.includes(image)) {
+      setSelectedImages(
+        selectedImages.filter((selected) => selected !== image)
+      );
+    } else {
+      setSelectedImages([...selectedImages, image]);
+    }
+  };
+
+  const isImageSelected = (image) => selectedImages.includes(image);
+
   return (
     <div className="grid gap-5 grid-cols-5">
-      <img
-        className="col-span-2 row-span-2 border rounded-md"
-        src={image1}
-        alt=""
-      />
-      <img className="border rounded-md" src={image2} alt="" />
-      <img className="border rounded-md" src={image3} alt="" />
-      <img className="border rounded-md" src={image4} alt="" />
-      <img className="border rounded-md" src={image5} alt="" />
-      <img className="border rounded-md" src={image6} alt="" />
-      <img className="border rounded-md" src={image7} alt="" />
-      <img className="border rounded-md" src={image8} alt="" />
-      <img className="border rounded-md" src={image9} alt="" />
-      <img className="border rounded-md" src={image10} alt="" />
-      <img className="border rounded-md" src={image11} alt="" />
-      {/* <button>add image</button> */}
+      {Data.map((img, index) => (
+        <div
+          key={index}
+          className={
+            index === 0
+              ? "col-span-2 row-span-2 border rounded-md relative cursor-pointer"
+              : "border rounded-md relative cursor-pointer"
+          }
+        >
+          <img
+            key={index}
+            className={`w-full h-auto rounded-lg transition-opacity ${
+              isImageSelected(img) ? "opacity-50" : ""
+            } hover:opacity-50`}
+            src={img.img}
+            alt={`Image ${img.id}`}
+            onClick={() => handleImageClick(img)}
+          />
+          {/* <div
+            className={`absolute top-0 left-0 w-full h-full bg-black bg-opacity-0 transition-opacity duration-300 ${
+              isImageSelected(img) ? "opacity-50" : ""
+            }`}
+          /> */}
+
+          {isImageSelected(img) && (
+            <div className="absolute top-2 left-2 text-black font-bold text-xl">
+              ✓
+            </div>
+          )}
+        </div>
+      ))}
       <AddImageBtn />
     </div>
   );

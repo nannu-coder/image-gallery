@@ -27,6 +27,7 @@ const AddImageBtn = () => {
         style={{ display: "none" }}
         ref={fileInputRef}
         onChange={handleFileInputChange}
+        defaultChecked
       />
       {/* <button
         onClick={openFileInput}
